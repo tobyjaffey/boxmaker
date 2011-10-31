@@ -26,12 +26,15 @@ public class CommandLine {
         double mmCutWidth = Double.parseDouble(args[5]);
         double mmNotchLength = Double.parseDouble(args[6]);
         boolean drawBoundingBox = Boolean.parseBoolean(args[7]);
+        int lidNotches = 0;
+        if (args.length > 8)
+            lidNotches = Integer.parseInt(args[8]);
         
         // try to render it, don't do any error handling (file won't get created)
         try {
             Renderer.render(filePath,filePath,mmWidth,mmHeight,mmDepth,
                             mmThickness,mmCutWidth,mmNotchLength,
-                            drawBoundingBox,false);
+                            drawBoundingBox,false,lidNotches);
         } catch (FileNotFoundException e) {
             System.out.println("ERROR!"+e.toString());
             System.exit(0);
